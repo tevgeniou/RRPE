@@ -68,6 +68,7 @@ for (lag1.sign in c(-1,1)){   # -1 is for mean reversion, 1 is for momentum
       cat(" Mean Reversion **********")
 
     sector=all_sectors[[which(names(all_sectors)==sectornow)]]
+    dir.create(savefile.ini, showWarnings = FALSE)
     resfile=paste(paste(savefile.ini,sectornow,sep="/"),"data",sep="_");  load(resfile)
     cat("\nData File Used:",resfile)
 

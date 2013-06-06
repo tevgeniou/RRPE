@@ -77,6 +77,7 @@ if (use.cca*fix.sector){
 
 ALL=mclapply(1:length(all_sectors),function(s){
   sector=all_sectors[[s]]
+  dir.create(savefile.ini, showWarnings = FALSE)
   savefile=paste(savefile.ini,names(all_sectors)[s],sep="/");
   savefile=paste(savefile,"data",sep="_")
 
