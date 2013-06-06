@@ -20,7 +20,7 @@
 
 rm(list=ls()); library("quantmod") # Note: for R versio 3.0.0 this library does not work yet. Earlier versions are fine
 
-datafile= "where NIPS2013.data is saved" #"C:/Users/RobustPortfolio/NIPS2013.data"
+datafile= "NIPS2013.data" #"C:/Users/RobustPortfolio/NIPS2013.data"
 
 getdata.fromscratch=0 # set to 1 if we want to re-download the data from Yahoo!. if 0 it
 
