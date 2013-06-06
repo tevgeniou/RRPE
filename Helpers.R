@@ -32,6 +32,8 @@ energy=intersect(colnames(dataset),c("XOM","PTR","GE","CVX","BBL","BP","TOT","PB
 #"XOM" may need to be removed as it is the largest company in the world and behaves special
 healthcare=intersect(colnames(dataset),c("MMM","AMGN","CVS","GILD","UNH","MDT","ESRX","WAG","BIIB","BAX","COV","SYK","MCK","ISRG","LUX","WLP","CI","BDX","AET","HCA","CAH","ZMH","STJ","HUM","DVA","ABC","LIFE","SNN","BSX","FMS","EW"))
 tech=intersect(colnames(dataset),c("AAPL","GOOG","MSFT","IBM","ORCL","QCOM","CSCO","INTC","TSM","SAP","DCM","EMC","FB","TXN","VMW","HPQ","INFY","ADP","ITW","ETN","BIDU","CRM","YHOO","DELL","CTSH","WIT","ADBE","INTU","BRCM","MSI","AMAT","LNKD","KYO","SYMC","CERN","NOK","ATVI","OMC","ADI","CTXS","NTAP","DOV","STX","SNDK","WDC","CA","ALTR","JNPR","FISV","CHKP","PNR","RHT","TDC","RAX"))
+all_sectors=list(financials=financials,energy=energy,healthcare=healthcare,tech=tech)
+
 ################################################################################################
 
 ###################################################################################################################
