@@ -44,7 +44,7 @@ robust.CCA <- function(portfolio.dataset,signal.dataset,all.lambdas,mean.mom=NUL
   r_t = signal.dataset
 
   #######################
-  ## scale the data #####
+  ## scale the data: if the link to paper [14] needs to be made, no need in general
   #######################
 
   if(use.mean == TRUE){
@@ -103,7 +103,7 @@ robust.CCA <- function(portfolio.dataset,signal.dataset,all.lambdas,mean.mom=NUL
   ##############################################
   robust.CCA.for.given.z0 <- function(eps,z0){
     arg_of_prox <- function(z){
-      #browser()
+      
       z.x = z[1:n]
       z.y = z[(n+1):length(z)]
       if(q==1){u = c(2*L1.norm(z.x)*sign(z.x),2*L1.norm(z.y)*sign(z.y))}else{u=2*z}
@@ -111,7 +111,7 @@ robust.CCA <- function(portfolio.dataset,signal.dataset,all.lambdas,mean.mom=NUL
       v = chain.rule.prefactor*c(Gamma%*%z.x/sqrt(as.double(t(z.x)%*%Gamma%*%z.x)),Sigma%*%z.y/sqrt(as.double(t(z.y)%*%Sigma%*%z.y)))
       return(z-((-A+abs(eta(z,eps))*B)%*%z-eps*u/2-(eta(z,eps)>0)*eta(z,eps)*v/2)/norm(P+abs(eta(z,eps))*B,"2"))}
     prox1 <- function(w,last_eta){
-      #browser()
+      
       r=eps*0.5/norm(P+abs(last_eta)*B,"2")
       arg_of_argmin <- function(u){0.5*sum((u-w)^2)+r*sum(abs(u))^2}
       sum_of_lambdas_minus_1 <- function(rho){sum(sapply(rho*abs(w)-2*r,function(w){max(w,0)}))-1}
@@ -129,7 +129,7 @@ robust.CCA <- function(portfolio.dataset,signal.dataset,all.lambdas,mean.mom=NUL
       return(lambda*w/(2*r+lambda))
     }
     prox2 <- function(w,last_eta){
-      #browser()
+      
       r=eps*0.5/norm(P+abs(last_eta)*B,"2")
       arg_of_argmin <- function(u){0.5*sum((u-w)^2)+r*(L2.norm(u[1:n])+L2.norm(u[(n+1):(n+m)]))^2}
       sum_of_lambdas_minus_1 <- function(rho){max(rho*L2.norm(w[1:n])-2*r,0)+max(rho*L2.norm(w[(n+1):(n+m)])-2*r,0)-1}
@@ -155,9 +155,9 @@ robust.CCA <- function(portfolio.dataset,signal.dataset,all.lambdas,mean.mom=NUL
     last_z.y = last_z.y/sqrt(t(last_z.y)%*%Sigma%*%last_z.y)
     last_z = c(last_z.x,last_z.y)
     for (k in 1:5000){
-      #browser()
+      
       z <- prox(arg_of_prox(last_z),eta(last_z,eps))
-      #stopifnot(eta(last_z,eps) - eta(z,eps) >= -tol)
+      
       z.x = z[1:n]
       z.x = z.x/sqrt(t(z.x)%*%Gamma%*%z.x)
       z.y = z[(n+1):length(z)]
