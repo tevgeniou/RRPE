@@ -93,7 +93,7 @@ for (lag1.sign in c(-1,1)){   # -1 is for mean reversion, 1 is for momentum
 
     ######################################################################################
     ######################################################################################
-    for (use.mean in 1:2){ # havethe choice to subtract the mean or not
+    for (use.mean in 1:2){ # have the choice to subtract the mean or not 
       cat("\n\nUse Mean now:",use.mean-1)
       plotfile=paste(plotfile.ini,use.mean-1,sep="_")
       all.solutions=SECTOR_RES[[use.mean]]
@@ -127,21 +127,6 @@ for (lag1.sign in c(-1,1)){   # -1 is for mean reversion, 1 is for momentum
       cat("\nDays Market, MarketLag1, Lambda0, Chosen,Gamma,hindsight")
       cat("\nSUM ALL:",nrow(all.pnls),apply(all.pnls,2,sum))
       cat("\nSHARPE ALL:",nrow(all.pnls),apply(all.pnls,2,sharpe))
-
-      if (sectornow=="financials"){
-        plot(cumsum(all.pnls[,1]),type="l", main="market all",cex.main=1.5,lwd=2.8)
-        dev.copy(png,filename=paste(plotfile,"market.png",sep="_")); dev.off ();
-        plot(cumsum(all.pnls[,2]),type="l", main="market.lag1 all",cex.main=1.5,lwd=2.8)
-        dev.copy(png,filename=paste(plotfile,"marketlag1.png",sep="_")); dev.off ();
-        plot(cumsum(all.pnls[,3]),type="l", main="lambda0 all",cex.main=1.5,lwd=2.8)
-        dev.copy(png,filename=paste(plotfile,"lambda0.png",sep="_")); dev.off ();
-        plot(cumsum(all.pnls[,4]),type="l", main="algo all",cex.main=1.5,lwd=2.8)
-        dev.copy(png,filename=paste(plotfile,"algo.png",sep="_")); dev.off ();
-        plot(cumsum(all.pnls[,5]),type="l", main="lambda infinity all",cex.main=1.5,lwd=2.8)
-        dev.copy(png,filename=paste(plotfile,"lambdainfinity.png",sep="_")); dev.off ();
-        plot(cumsum(all.pnls[,6]),type="l", main="lambda hindsight all",cex.main=1.5,lwd=2.8)
-        dev.copy(png,filename=paste(plotfile,"lambdahindsight.png",sep="_")); dev.off ();
-      }
 
       plot(log10epsilon,test_nu,type="l",main="Test Lag-1 Autocorrelation",cex.main=1.5,lwd=2.8,ylab="Test Lag-1 Autocorrelation",xlab=expression(paste(log(epsilon))),cex.lab=1.2)
       dev.copy(png,filename=paste(plotfile,"testnu.png",sep="_")); dev.off (); dev.off ();
