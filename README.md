@@ -5,9 +5,9 @@ How to use the code.
 * Start R and switch to the directory where the code resides
 * Run the command `source("RunExperiments.R")`
 * After a a few hours should see the following results
+
 ```
 *********** RUNNING THE CCA1 LEARNER ***********
-
 
 ######################
  use.mean= 0 sector= financials
