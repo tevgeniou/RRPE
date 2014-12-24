@@ -24,7 +24,7 @@
 ### The L2 learner
 ###################################################################################################################
 
-# This returns a list of two patrices, one for the portfolios and one for the signals, wach matrix having one column per lambda
+# This returns a list of two matrices, one for the portfolios and one for the signals, each matrix having one column per lambda
 
 # this is for 1 lambda
 max.lag1.portfolio <- function(portfolio.dataset=NULL,signal.dataset,lambda,mean.mom,use.mean){
